@@ -1,0 +1,39 @@
+﻿@using HumanResources.Data;
+@model List<Advert>
+<section class="section" id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Our Latest Products</h2>
+                    <span>Check out all of our jobs.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="align-content-center">
+    <div class="container">
+        @foreach (var advert in ViewBag.Adverts as IEnumerable<Advert>)
+        {
+            <div class="card mb-3" style="max-width: 950px; ">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <a asp-action="Advert" asp-route-id="@advert.Id">
+                            <img src="@advert.Logo" class="img-fluid rounded-start" alt="...">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@advert.Category.Name</h5>
+                            <p class="card-text">@advert.Qualifications</p>
+                            <h5 class="card-title text-primary">@advert.Salary.ToString("c2")</h5>
+                            <h5 style="text-align:center">  <a asp-action="Recourse" asp-route-id="@advert.Id"><button type="submit" class="btn btn-primary">Apply</button></a> </h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+</section>
